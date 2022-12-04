@@ -13,7 +13,8 @@ while 1:
     print("[3] Sleep Condition Survey")
     print("[4] View Weekly Report")
     print("[5] View Montly Report")
-    print("[6] Exit")
+    print("[6] View all sleep data")
+    print("[7] Exit")
     menu = int(input())
     if menu == 1:
         sql = "INSERT INTO USER (Fname, Lname, Name, ID, Password, Bdate, Sex) VALUES (%s, %s, %s, %s, %s, %s, %s)"
@@ -27,7 +28,8 @@ while 1:
         Sex = str(input())
         cursor.execute(sql, (Fname, Lname, Name, ID, Password, Bdate, Sex))
     elif menu == 2:
-        sql = "DELETE FROM Book WHERE bookname = %s"
+
+        # sql = "DELETE FROM Book WHERE bookname = %s"
         print("Input the book's name that you want to delete: ")
         deleteBookname = str(input())
         cursor.execute(sql, deleteBookname)
