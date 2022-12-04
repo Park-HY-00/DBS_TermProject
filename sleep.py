@@ -7,7 +7,7 @@ cursor = db.cursor()
 while 1:
     print("-------------------------------------------")
     print("[2020069022]------------[Hyeong-Yeong Park]")
-    print("[------Sleep Time & Condition Diary--------]")
+    print("[-------Sleep Time & Condition Diary--------]")
     print("[1] Sign in")
     print("[2] Sleep Time Record")
     print("[3] Sleep Condition Survey")
@@ -16,13 +16,16 @@ while 1:
     print("[6] Exit")
     menu = int(input())
     if menu == 1:
-        sql = "INSERT INTO Book (bookid, bookname, publisher, price) VALUES (%s, %s, %s, %s)"
-        print("Input the book's information that you want to insert (bookid, bookname, publisher, price: )")
-        bookid = int(input())
-        bookname = str(input())
-        publisher = str(input())
-        price = int(input())
-        cursor.execute(sql, (bookid, bookname, publisher, price))
+        sql = "INSERT INTO USER (Fname, Lname, Name, ID, Password, Bdate, Sex) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        print("Input your personal information (Fname, Lname, Name, ID, Passwrod, Bdate, Sex)")
+        Fname = str(input())
+        Lname = str(input())
+        Name = str(input())
+        ID = str(input())
+        Password = str(input())
+        Bdate = str(input())    # DATE datatype으로 받아오는 수정 필요
+        Sex = str(input())
+        cursor.execute(sql, (Fname, Lname, Name, ID, Password, Bdate, Sex))
     elif menu == 2:
         sql = "DELETE FROM Book WHERE bookname = %s"
         print("Input the book's name that you want to delete: ")
