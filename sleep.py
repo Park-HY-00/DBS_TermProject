@@ -41,7 +41,7 @@ while 1:
         cursor.execute(sql, (Fname, Lname, Name, ID, Password, Bdate, Sex))
     elif menu == 2:
         print("[-------------Sleep Time Record-------------]")
-        sql = "INSERT INTO SLEEP TIME (UserID, Snumber, Date, Stime, Etime, Time) VALUES (%s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO SLEEP_TIME (UserID, Snumber, Date, Stime, Etime, Time) VALUES (%s, %s, STR_TO_DATE('%s', '%Y-%m-%d'), %s, %s, %s)"
         # sql = "DELETE FROM Book WHERE bookname = %s"
         print("Inpute your ID: ")
         UserID = str(input())
@@ -89,7 +89,7 @@ while 1:
     elif menu == 4:
         print("[------------View Montly Report-------------]")
         print("Select the week")
-        sql = "SELECT * FROM Book"
+        # sql = "SELECT * FROM Book"
         cursor.execute(sql)
         result = cursor.fetchall()
         for row_data in result:
