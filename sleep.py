@@ -9,7 +9,7 @@ while 1:
     print("-------------------------------------------")
     print("[2020069022]------------[Hyeong-Yeong Park]")
     print("[-------Sleep Time & Condition Diary--------]")
-    print("[-------------Sleep Time Record-------------]")
+    print("[----------Sleep Condition Survey-----------]")
     print("[1] Sign in")
     print("[2] Sleep Time Record")
     print("[3] Sleep Condition Survey")
@@ -49,6 +49,12 @@ while 1:
         cursor.execute(sql, UserID, Snumber, Date, Stime, Etime, Time)
         # db.commit()
     elif menu == 3:
+        print("[----------Sleep Condition Survey-----------]")
+        print("Did you sleep well?\n1. Very Good\n2. So so\n3. Bad\n")
+        s1 = int(input())
+        print("Did you have a nightmare?\n1. Yes\n2. No\n")
+        s2 = int(input())
+        # Calculate the sleep condition score
         sql = "SELECT * FROM Book WHERE bookname = %s"
         print("Search for (book's name) :")
         searchBook = str(input())
