@@ -9,7 +9,7 @@ while 1:
     print("-------------------------------------------")
     print("[2020069022]------------[Hyeong-Yeong Park]")
     print("[-------Sleep Time & Condition Diary--------]")
-    print("[----------Sleep Condition Survey-----------]")
+    print("[-----------View all sleep data-------------]")
     print("[1] Sign in")
     print("[2] Sleep Time Record")
     print("[3] Sleep Condition Survey")
@@ -63,12 +63,18 @@ while 1:
         for data in result:
             print(data)
     elif menu == 4:
+        print("[------------View Montly Report-------------]")
         sql = "SELECT * FROM Book"
         cursor.execute(sql)
         result = cursor.fetchall()
         for row_data in result:
             print(row_data)
     elif menu == 5:
+        print("[------------View Montly Report-------------]")
+    elif menu ==6:
+        print("[-----------View all sleep data-------------]")
+    elif menu == 7:
         break
+
 
     db.commit()
