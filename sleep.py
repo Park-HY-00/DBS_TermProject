@@ -1,6 +1,7 @@
 import pymysql
 
-db = pymysql.connect(host='192.168.155.101', user='hypark', password='parkhy0115!', port=3308, db='sleep', charset='utf8')
+db = pymysql.connect(host='192.168.155.101', user='hypark',
+                     password='parkhy0115!', port=3308, db='sleep', charset='utf8')
 
 cursor = db.cursor()
 
@@ -18,7 +19,8 @@ while 1:
     menu = int(input())
     if menu == 1:
         sql = "INSERT INTO USER (Fname, Lname, Name, ID, Password, Bdate, Sex) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        print("Input your personal information (Fname, Lname, Name, ID, Passwrod, Bdate, Sex)")
+        print(
+            "Input your personal information (Fname, Lname, Name, ID, Passwrod, Bdate, Sex)")
         Fname = str(input())
         Lname = str(input())
         Name = str(input())
@@ -28,12 +30,21 @@ while 1:
         Sex = str(input())
         cursor.execute(sql, (Fname, Lname, Name, ID, Password, Bdate, Sex))
     elif menu == 2:
-
+        sql = "INSERT INTO SLEEP TIME (UserID, Snumber, Date, Stime, Etime, Time) VALUES (%s, %s, %s, %s, %s, %s)"
         # sql = "DELETE FROM Book WHERE bookname = %s"
-        print("Input the book's name that you want to delete: ")
-        deleteBookname = str(input())
-        cursor.execute(sql, deleteBookname)
-        db.commit()
+        print("Inpute your ID: ")
+        UserID = str(input())
+        print("Input the record number: ")
+        Snumber = int(input())
+        print("Inpute the date: ")
+        Date = str(input())   # DATE datatype으로 받아오는 수정 필요
+        print("Input the time when you start sleep: ")
+        Stime = str(input())    # TIME datatype으로 받아오는 수정 필요
+        print("Input the time when you wake up: ")
+        Etime = str(input())    # TIME datatype으로 받아오는 수정 필요
+        Time = Stime - Etime - 12
+        cursor.execute(sql, UserID, Snumber, Date, Stime, Etime, Time)
+        # db.commit()
     elif menu == 3:
         sql = "SELECT * FROM Book WHERE bookname = %s"
         print("Search for (book's name) :")
