@@ -21,7 +21,7 @@ while 1:
     menu = int(input())
     if menu == 1:
         print("[------------------Sign in------------------]")
-        sql = "INSERT INTO USER (Fname, Lname, Name, ID, Password, Bdate, Sex) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO USER (Fname, Lname, Name, ID, Password, Bdate, Sex) VALUES (%s, %s, %s, %s, %s, STR_TO_DATE('%s', '%Y-%m-%d'), %s)"
         print(
             "Input your personal information (Fname, Lname, Name, ID, Passwrod, Bdate, Sex)")
         print("What is your First name?")
@@ -33,7 +33,7 @@ while 1:
         ID = str(input())
         print("Password: ")
         Password = str(input())
-        print("What is your Birth-day?")
+        print("What is your Birth-day? (YYYY-MM-DD)")
         Bdate = str(input())    # DATE datatype으로 받아오는 수정 필요
         print("What is your sex? (Male/Female)")
         Sex = str(input())
@@ -53,7 +53,7 @@ while 1:
         Stime = str(input())    # TIME datatype으로 받아오는 수정 필요
         print("Input the time when you wake up: ")
         Etime = str(input())    # TIME datatype으로 받아오는 수정 필요
-        Time = Stime - Etime - 12
+        Time = Stime - Etime - 12   # 시간 계산하는 거 수정 필요
         cursor.execute(sql, UserID, Snumber, Date, Stime, Etime, Time)
         # db.commit()
     elif menu == 3:
@@ -82,7 +82,7 @@ while 1:
         else:
             condition = "Bad"
         print("Condition : ", condition)
-        cursor.execute(sql, searchBook)
+        # cursor.execute(sql, searchBook)
         result = cursor.fetchall()
         for data in result:
             print(data)
